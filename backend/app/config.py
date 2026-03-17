@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     groq_model: str = Field(default='llama-3.1-70b-versatile', alias='GROQ_MODEL')
 
     gemini_base_url: str = Field(default='https://generativelanguage.googleapis.com/v1beta', alias='GEMINI_BASE_URL')
-    gemini_model: str = Field(default='gemini-1.5-flash', alias='GEMINI_MODEL')
+    gemini_model: str = Field(default='gemini-3-flash', alias='GEMINI_MODEL')
 
 
 @lru_cache(maxsize=1)

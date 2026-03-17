@@ -1,0 +1,8 @@
+backend/.env
+backend/.venv/
+backend/app/__pycache__/
+backend/app/ai_providers/__pycache__/
+backend/app/geometry/__pycache__/
+backend/app/routers/__pycache__/
+backend/app/services/__pycache__/
+backend/app/utils/__pycache__/

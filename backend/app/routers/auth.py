@@ -26,3 +26,18 @@ def google_login(payload: GoogleAuthRequest, db: Session = Depends(get_db)) -> A
 
     access_token = create_access_token(user_id=user.id, email=user.email)
     return AuthResponse(access_token=access_token)
+
+@router.post("/dev-login", response_model=AuthResponse)
+def dev_login(db: Session = Depends(get_db)) -> AuthResponse:
+    # Create or get a test user
+    user = db.query(User).filter(User.email == "dev@test.com").first()
+
+    if not user:
+        user = User(email="dev@test.com", name="Dev User")
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+
+    access_token = create_access_token(user_id=user.id, email=user.email)
+
+    return AuthResponse(access_token=access_token)
